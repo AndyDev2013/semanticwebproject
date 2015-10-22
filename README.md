@@ -21,6 +21,17 @@ Choosing from both of these datasets
 [DataGov Link](https://data.gov.ie/data)
 [Apps4Gaps](http://apps4gaps.ie/)
 
+# Integration Plan
+
+I plan on developing the api using Node.JS using the chosen data sets. To give the user a quick way of accessing all of the functions I'm adding to the API I wish to develop a webpage using a prebuilt bootstrap template but heavily editing it for my needs. Seeing the project will be using Node.js and be heavily reliant on Javascript I have chosen the D3 library for this.
+
+Mention node.js modules...
+Mention chosen database...
+Mention which D3 graphs show best..
+
+[Node.js](https://nodejs.org/en/)
+[BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
+[D3 Library](http://d3js.org/)
 
 
 
