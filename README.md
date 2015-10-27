@@ -1,7 +1,9 @@
 # semanticwebproject
+
 Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweeney
 
 # Contents
+
 * Project Outline
 * Choosen Datasets
 * Integration plan
@@ -18,8 +20,21 @@ Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweene
 # Chosen Datasets
 
 Choosing from both of these datasets 
-[DataGov Link](https://data.gov.ie/data)
-[Apps4Gaps](http://apps4gaps.ie/)
+
+* [DataGov Link](https://data.gov.ie/data)
+* [CSO](http://www.cso.ie/)
+
+After checking over them all I decided to use the following three datasets
+
+* [Galway County Scenic Routes](https://data.gov.ie/dataset/galway-county-scenic-routesf5940)
+* [Public Visitor Attractions Open Data](https://data.gov.ie/dataset/galway-city-public-visitor-attractions)
+* [Galway City Parks](http://opendata.galwaycity.opendata.arcgis.com/datasets/683ff500430447c985f4775a6b5dd112_0)
+
+The goal of combining these three datasets is to point out if public visitor attractions and Galway parks are close to each other. This kind of information can be used for
+
+* creating walking tours
+* creating bus tours around galway
+* guiding the flow of tourists through the cities
 
 # Integration Plan
 
@@ -29,9 +44,9 @@ Mention node.js modules...
 Mention chosen database...
 Mention which D3 graphs show best..
 
-[Node.js](https://nodejs.org/en/)
-[BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
-[D3 Library](http://d3js.org/)
+* [Node.js](https://nodejs.org/en/)
+* [BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
+* [D3 Library](http://d3js.org/)
 
 
 
