@@ -32,21 +32,23 @@ After checking over them all I decided to use the following three datasets
 
 The goal of combining these three datasets is to point out if public visitor attractions and Galway parks are close to each other. This kind of information can be used for
 
-* creating walking tours
-* creating bus tours around galway
-* guiding the flow of tourists through the cities
+* Creating walking tours
+* Creating bus tours around galway
+* Guiding the flow of tourists through the cities
 
 # Integration Plan
 
-I plan on developing the api using Node.JS using the chosen data sets. To give the user a quick way of accessing all of the functions I'm adding to the API I wish to develop a webpage using a prebuilt bootstrap template but heavily editing it for my needs. Seeing the project will be using Node.js and be heavily reliant on Javascript I have chosen the D3 library for this.
+I plan on developing the api using Node.JS using the chosen data sets. To give the user a quick way of accessing all of the functions I'm adding to the API I wish to develop a webpage using a prebuilt bootstrap template but heavily editing it for my needs. 
 
-Mention node.js modules...
-Mention chosen database...
-Mention which D3 graphs show best..
+Seeing the project will be using Node.js and be heavily reliant on Javascript I have chosen the Google Maps API for representing the data. Google Maps will let me overlay the GeoJSON polygon shape information on top of the map.
 
+All of this information will be stored in an Sqlite3 database to store all of the information required for the API.
+
+Links to resources
 * [Node.js](https://nodejs.org/en/)
+* [Sqlite3](https://www.npmjs.com/package/sqlite3)
 * [BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
-* [D3 Library](http://d3js.org/)
+* [Google Maps](https://developers.google.com/maps/?hl=en)
 
 
 
