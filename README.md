@@ -44,6 +44,13 @@ Seeing the project will be using Node.js and be heavily reliant on Javascript I 
 
 All of this information will be stored in an Sqlite3 database to store all of the information required for the API.
 
+The user should be able to 
+
+* View the different contrasts between the three datasets
+* View information about the highlighted areas on the map
+* Return json information on a selected area defined by the user
+* Add their own points of interest
+
 Links to resources
 * [Node.js](https://nodejs.org/en/)
 * [Sqlite3](https://www.npmjs.com/package/sqlite3)
