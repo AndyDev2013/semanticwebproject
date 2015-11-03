@@ -1,0 +1,9 @@
+#googlemap 
+{
+	height: 400px;
+	width: 100%;	  	
+	border: solid;
+	border-color: gray;
+	border-width: 1px;
+	float: center;
+}
