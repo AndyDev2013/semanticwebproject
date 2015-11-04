@@ -1,15 +1,16 @@
 var express = require('express');
-
+var http = require('http');
 var app = express();
 
-var todos = [
-  'Clean dog.'
-  , 'Buy Groceries.'
-  , 'Send letter.'
-];
+var httpServer = http.Server(app);
+
+app.use(express.static(__dirname));
+
 
 app.get('/', function(req, res) {
-    res.json({ message: 'It works!' });   
+    //res.json({ message: 'It works!' });   
+
+	res.sendfile(__dirname + '/index.html');
 });
 
 app.get('/todo', function(req, res) {
