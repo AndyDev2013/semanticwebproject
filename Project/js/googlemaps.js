@@ -5,10 +5,11 @@
 
 var map;
 
-function initMap() {
+function initMap() 
+{
   map = new google.maps.Map(document.getElementById('googlemap'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    center: {lat: 53.270668, lng: -9.056790500000034},
+    zoom: 10
   });
 }
 
