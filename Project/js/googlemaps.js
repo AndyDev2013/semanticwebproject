@@ -3,13 +3,38 @@
 // GoogleMaps geolocations
 // Written by Andrew Sweeney for 4th Year Semantic Web
 
-var map;
-
-function initMap() 
+function Galway_Scenic()
 {
-  map = new google.maps.Map(document.getElementById('googlemap'), {
-    center: {lat: 53.270668, lng: -9.056790500000034},
-    zoom: 10
-  });
+	var map;
+
+	map = new google.maps.Map(document.getElementById('googlemap'), {
+		center: {lat: 53.270668, lng: -9.056790500000034},
+		zoom: 10
+	});
+
+	map.data.loadGeoJson('data/Galway_Scenic.geojson');
 }
 
+function Galway_Attractions()
+{
+	var map;
+
+	map = new google.maps.Map(document.getElementById('googlemap'), {
+		center: {lat: 53.270668, lng: -9.056790500000034},
+		zoom: 10
+	});
+
+	map.data.loadGeoJson('data/Galway_Attractions.geojson');
+}
+
+function Galway_Parks(select)
+{
+	var map;
+
+	map = new google.maps.Map(document.getElementById('googlemap'), {
+		center: {lat: 53.270668, lng: -9.056790500000034},
+		zoom: 10
+	});
+
+	map.data.loadGeoJson('data/Galway_Parks.geojson');
+}

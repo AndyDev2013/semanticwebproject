@@ -7,6 +7,9 @@ var app = express();
 var httpServer = http.Server(app);
 app.use(express.static(__dirname));
 
+var masterAlldata;
+var db;
+
 // Initizing server
 
 InitServer();
@@ -17,18 +20,59 @@ app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/index.html');
 });
 
-app.get('/todo', function(req, res) {
-    res.json(todos);   
+// Original Data
+
+app.get('/GET_originaldata_galway_attactions', function(req, res) {
+	res.json(JSON.parse(fs.readFileSync('data/Galway_Attractions.geojson')));
 });
 
+app.get('/GET_originaldata_galway_parks', function(req, res) {
+	res.json(JSON.parse(fs.readFileSync('data/Galway_Parks.geojson')));
+});
+
+app.get('/GET_originaldata_galway_scenic', function(req, res) {
+	res.json(JSON.parse(fs.readFileSync('data/Galway_Scenic.geojson')));
+});
+
+// API Methods
+
+app.get('/GET_allData', function(req, res) {
+    res.json(JSON.stringify(masterAlldata));   
+});
+
+app.get('/DELETE_allData', function(req, res) {
+
+	var dbWarning = {"warning_message":"Database HAS been cleared"};
+	var dbOtherWarning = {"warning_message":"Database has ALREADY been cleared"};
+
+	if(db != null)
+	{
+		db.destroy().then(function ()
+		{}).catch(function(err){})
+
+		masterAlldata = null;
+		db = null;
+
+		res.json(dbWarning);  
+	}
+	else
+		res.json(dbOtherWarning);  
+});
+
+/*
 app.get('/todo/:id', function(req, res) {
     res.json(todos[req.params.id]);   
 });
-
+*/
 
 // Server Listening on port 8000
 
 var server = app.listen(8000);
+
+// This function loads the 3 files into the database
+// to display the ability to store the geojson data
+// using pouchdb. The data is then retrieved for the
+// server to use. 
 
 function InitServer()
 {
@@ -37,7 +81,7 @@ function InitServer()
 	console.log("Initializing node.js Server");
 	console.log("---------------------------");
 
-	var db = new PouchDB('semantic_pouchDB');
+	db = new PouchDB('semantic_pouchDB');
 	
 	console.log("\nReading in data files...");
 
@@ -78,6 +122,8 @@ function InitServer()
 
 	db.allDocs({include_docs: true}, function(error, result) 
 	{	   
+  		masterAlldata = result.rows;
+
 		console.log("-- Data returned: [" + result.rows.length + "]");
 
 		/*
@@ -86,11 +132,16 @@ function InitServer()
 			var str = JSON.stringify(result.rows[i].doc._id);
 			console.log(str);		
 		}
+
+		// Used for debugging and checking data
+
 		*/
   	
 		console.log("\n-----------------------");
 		console.log("Queries and connections");
 		console.log("-----------------------\n");
   	});
+
+
 }
 

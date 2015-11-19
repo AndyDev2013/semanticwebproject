@@ -21,43 +21,115 @@
 
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Semantic Web Project - Galway Geolocation Information</a>
-            </div>
-           
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>                    
-                </ul>
-            </div>
-        </nav>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Semantic Web Project - Galway Geolocation Information</a>
+        </div>
+       
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="active">
+                    <a href="index.html"><i></i>API and Help</a>
+                    <a href="original_galwayAttactions.html"><i></i> File Data - Galway Attractions</a>
+                    <a href="original_galwayParks.html"><i></i> File Data - Galway Parks</a>
+                    <a href="original_galwayScenic.html"><i></i> File Data - Scenic Routes</a>
+                </li>                    
+            </ul>
+        </div>
+    </nav>
 
-        <div id="page-wrapper">
+    <div id="page-wrapper">
 
-                <div id="googlemap"></div>
-                
-                <div id="jsonout"></div>
+        <div style="background-color:white">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>About</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>The purpose of using information from these three data sets was to show scenic routes, attactions and parks from around galway. This kind of information could be used in the tourism sector to generate walking tours, bus tours and other excavations around Galway county.</td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>  
+
+        <div style="background-color:white">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Instructions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>All data is returned in raw json format</td>
+              </tr>
+            </tbody>
+          </table> 
+        </div>  
+
+        <div style="background-color:white">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Request Type</th>
+                <th>Description</th>
+                <th>Url</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">Get the original Galway Attractions Data from file</td>
+                <td><a href="http://127.0.0.1:8000/GET_originaldata_galway_attactions">http://127.0.0.1:8000/GET_originaldata_galway_attactions</a></td>
+              </tr>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">Get the original Galway parks Data from file</td>
+                <td><a href="http://127.0.0.1:8000/GET_originaldata_galway_parks">http://127.0.0.1:8000/GET_originaldata_galway_parks</a></td>
+              </tr>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">Get the original Galway scenic Data from file</td>
+                <td><a href="http://127.0.0.1:8000/GET_originaldata_galway_scenic">http://127.0.0.1:8000/GET_originaldata_galway_scenic</a></td>
+              </tr>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">All data from database</td>
+                <td><a href="http://127.0.0.1:8000/GET_allData">http://127.0.0.1:8000/GET_allData</a></td>
+              </tr>
+              <tr>
+                <td id="request_delete">DELETE</td>
+                <td id="description"><div id="warning">[Warning]</div> Clears the entire database. You will have to restart the server again to re-populate</td>
+                <td><a href="http://127.0.0.1:8000/DELETE_allData">http://127.0.0.1:8000/DELETE_allData</a></td>
+              </tr>
+              <tr>
+                <td id="request_patch">PATCH</td>
+                <td id="description">Description</td>
+                <td><a href="http://127.0.0.1:8000/PATCH_">http://127.0.0.1:8000/PATCH_</a></td>
+              </tr>
+              <tr>
+                <td id="request_post">POST</td>
+                <td id="description">Description</td>
+                <td><a href="http://127.0.0.1:8000/POST_">http://127.0.0.1:8000/POST_</a></td>
+              </tr>
+            </tbody>
+          </table>       
 
         </div>
-
+    </div>
     </div>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Custom Javascript is Here -->
-    <script src="js/googlemaps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initMap" async defer></script>
-    <!-- Custom Javascript is Here --> 
 </body>
 </html>
