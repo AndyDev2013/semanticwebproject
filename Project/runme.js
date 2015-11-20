@@ -18,7 +18,34 @@ InitServer();
 // My init method for setting up the db
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/attractions', function(req, res) {
+	res.sendFile(__dirname + '/original_galwayAttactions.html');
+});
+
+app.get('/parks', function(req, res) {
+	res.sendFile(__dirname + '/original_galwayParks.html');
+});
+
+app.get('/scenic', function(req, res) {
+	res.sendFile(__dirname + '/original_galwayScenic.html');
+});
+
+app.get('/database', function(req, res) {
+
+	var datastuff = [];
+
+	for(var i = 0;i < masterAlldata.length;i++)
+	{
+		var temp = masterAlldata[i].id;
+
+		datastuff.push(temp);
+	}
+
+	res.json(JSON.stringify(datastuff));
+
 });
 
 // Original Data
@@ -102,12 +129,7 @@ app.get('/POST_addEntry/:name/:category/:street/:lat/:lng', function(req, res)
 
 	db.post(geoOb, function(error, result)
 	{
-		db.allDocs({include_docs: true}, function(error, result) 
-		{	   
-	  		masterAlldata = result.rows;
-
-			recordCount();
-	  	})
+		updateLocalDatabase();
 
 		/*
 		if(error != null)
@@ -123,6 +145,159 @@ app.get('/POST_addEntry/:name/:category/:street/:lat/:lng', function(req, res)
 	res.json(JSON.stringify(geoOb));
 });
 
+app.get('/DELETE_deleteEntry/:id', function(req, res) {
+
+	var dbWarning = {"warning_message":"Entry HAS been deleted"};
+	var dbOtherWarning = {"warning_message":"Database has NOT been deleted"};
+
+	db.get(req.params.id).then(function(doc) 
+	{
+	   db.remove(doc);
+	   updateLocalDatabase();
+	   res.json(dbWarning);  
+
+	}).catch(function (err) 
+	{
+  		res.json(dbOtherWarning);
+	});
+});
+
+app.get('/GET_HEAD', function(req, res) {
+
+	var MAX = 10;
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+
+	var count = masterAlldata.length;
+
+	var data = [];
+
+	if(count > MAX)
+	{
+		for(var i = 0;i < MAX;i++)
+		{
+			data.push(masterAlldata[i]);
+		}
+	}
+	else
+	{
+
+		for(var i = 0;i < masterAlldata.length;i++)
+		{
+			data.push(masterAlldata[i]);
+		}
+	}
+
+    res.json(JSON.stringify(data));   
+
+    reportConnect(req);
+});
+
+app.get('/GET_TAIL', function(req, res) {
+
+	var MAX = 10;
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+
+	var count = masterAlldata.length;
+
+	var data = [];
+
+	if(count > MAX)
+	{
+		for(var i = count;i >= (count-MAX);i--)
+		{
+			data.push(masterAlldata[i]);
+		}
+	}
+	else
+	{
+
+		for(var i = 0;i < masterAlldata.length;i++)
+		{
+			data.push(masterAlldata[i]);
+		}
+	}
+
+    res.json(JSON.stringify(data));   
+
+    reportConnect(req);
+});
+
+app.get('/GET_FIRST', function(req, res) {
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+
+	var data = [];
+
+	if(masterAlldata.length > 0)
+		data.push(masterAlldata[i]);		
+
+    res.json(JSON.stringify(data));   
+
+    reportConnect(req);
+});
+
+app.get('/GET_LAST', function(req, res) {
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+
+	var data = [];
+
+	if(masterAlldata.length > 0)
+		data.push(masterAlldata[masterAlldata.length - 1]);		
+
+    res.json(JSON.stringify(data));   
+
+    reportConnect(req);
+});
+
+app.get('/GET_COUNT', function(req, res) {
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+
+    res.json(JSON.stringify(masterAlldata.length));   
+
+    reportConnect(req);
+});
+
+app.get('/PATCH_changeEntry/:id/:name/:category/:street/:lat/:lng', function(req, res) 
+{
+	recordCount();
+
+	var geoOb =
+	[{
+		name : req.params.name,
+		category : req.params.category,
+		street : req.params.street,
+		lat : req.params.lat,
+		lng : req.params.lng
+	}];
+	
+	var geoOb = GeoJSON.parse(geoOb, {Point: ['lat', 'lng']});
+
+	db.post(geoOb, function(error, result)
+	{
+		updateLocalDatabase();
+
+		/*
+		if(error != null)
+			console.log(error);
+		else
+			console.log(result);
+		*/
+
+	})
+
+	reportConnect(req);
+
+	res.json(JSON.stringify(geoOb));
+});
 
 // Server Listening on port 8000
 
@@ -201,7 +376,13 @@ function InitServer()
 		{	   
 	  		masterAlldata = result.rows;
 
-			console.log("-- Data returned: [" + result.rows.length + "]");
+			console.log("-- Data returned: [" + result.rows.length + "]\n");
+
+			for(var i = 0;i < 1;i++)
+			{
+				var str = JSON.stringify(result.rows[i].doc._id);
+				console.log(str);
+			}
 
 			/*
 			for (var i = 0; i < result.rows.length; i++)
@@ -209,9 +390,7 @@ function InitServer()
 				var str = JSON.stringify(result.rows[i].doc._id);
 				console.log(str);		
 			}
-
 			// Used for debugging and checking data
-
 			*/
 	  	
 			console.log("\n-----------------------");
@@ -239,3 +418,12 @@ function reportConnect(req)
 	console.log("IP: " + req.ip + " ----- Query: " +  req.route.path);
 }
 
+function updateLocalDatabase()
+{
+	db.allDocs({include_docs: true}, function(error, result) 
+	{	   
+  		masterAlldata = result.rows;
+
+		recordCount();
+  	})
+}

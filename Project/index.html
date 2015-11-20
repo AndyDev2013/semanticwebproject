@@ -36,9 +36,10 @@
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
                     <a href="index.html"><i></i>API and Help</a>
-                    <a href="original_galwayAttactions.html"><i></i> File Data - Galway Attractions</a>
-                    <a href="original_galwayParks.html"><i></i> File Data - Galway Parks</a>
-                    <a href="original_galwayScenic.html"><i></i> File Data - Scenic Routes</a>
+                    <a href="/database"><i></i> Database - Data</a>
+                    <a href="/attractions"><i></i> File Data - Galway Attractions</a>
+                    <a href="/parks"><i></i> File Data - Galway Parks</a>
+                    <a href="/scenic"><i></i> File Data - Scenic Routes</a>
                 </li>                    
             </ul>
         </div>
@@ -82,7 +83,7 @@
               <tr>
                 <th>Request Type</th>
                 <th>Description</th>
-                <th>Url</th>
+                <th>Example Url</th>
               </tr>
             </thead>
             <tbody>
@@ -111,20 +112,46 @@
                 <td id="description"><div id="warning">[Warning]</div> Clears the entire database. You will have to restart the server again to re-populate</td>
                 <td><a href="http://127.0.0.1:8000/DELETE_allData">http://127.0.0.1:8000/DELETE_allData</a></td>
               </tr>
-
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">All a count of all entries</td>
+                <td><a href="http://127.0.0.1:8000/GET_COUNT">http://127.0.0.1:8000/GET_COUNT</a></td>
+              </tr>              
               <tr>
                 <td id="request_post">POST</td>
-                <td id="description">Add an geojson object to database.E.G http://127.0.0.1:8000/POST_addEntry/myname/category/mystreet/5000/900</td>
+                <td id="description">Add an entry to the database</td>
                 <td><a href="http://127.0.0.1:8000/POST_addEntry/myname/category/mystreet/5000/900">http://127.0.0.1:8000/POST_addEntry/myname/category/mystreet/5000/900</a></td>
               </tr>
-
+              <tr>
+                <td id="request_delete">DELETE</td>
+                <td id="description">Deletes an entry given the id</td>
+                <td><a href="http://127.0.0.1:8000/DELETE_deleteEntry/0">http://127.0.0.1:8000/DELETE_deleteEntry/0</a></td>
+              </tr>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">All FIRST entry</td>
+                <td><a href="http://127.0.0.1:8000/GET_FIRST">http://127.0.0.1:8000/GET_FIRST</a></td>
+              </tr>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">All LAST entry</td>
+                <td><a href="http://127.0.0.1:8000/GET_LAST">http://127.0.0.1:8000/GET_LAST</a></td>
+              </tr>              
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">All FIRST available 10 entries</td>
+                <td><a href="http://127.0.0.1:8000/GET_HEAD">http://127.0.0.1:8000/GET_HEAD</a></td>
+              </tr>
+              <tr>
+                <td id="request_get">GET</td>
+                <td id="description">All LAST available 10 entries</td>
+                <td><a href="http://127.0.0.1:8000/GET_TAIL">http://127.0.0.1:8000/GET_TAIL</a></td>
+              </tr>
               <tr>
                 <td id="request_patch">PATCH</td>
-                <td id="description">Description</td>
-                <td><a href="http://127.0.0.1:8000/PATCH_">http://127.0.0.1:8000/PATCH_</a></td>
+                <td id="description">Change a record by a given id</td>
+                <td><a href="http://127.0.0.1:8000/PATCH_changeEntry/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900">http://127.0.0.1:8000/PATCH_changeEntry/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900</a></td>
               </tr>
-
-
 
 
               <tr>
@@ -132,13 +159,6 @@
                 <td id="description">Description</td>
                 <td><a href="http://127.0.0.1:8000/POST_">http://127.0.0.1:8000/POST_</a></td>
               </tr>
-
-
-
-
-
-
-
 
             </tbody>
           </table>       
