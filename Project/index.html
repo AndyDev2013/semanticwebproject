@@ -70,7 +70,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>All data is returned in raw json format</td>
+                <td>All data is returned in raw geojson format as text. To query, click on any of the Url links to copy the data or make a request to the given urls. Below is a key showing all of the available functions with the api.</td>
               </tr>
             </tbody>
           </table> 
@@ -88,17 +88,17 @@
             <tbody>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">Get the original Galway Attractions Data from file</td>
+                <td id="description">Get the original Galway Attractions Data from FILE</td>
                 <td><a href="http://127.0.0.1:8000/GET_originaldata_galway_attactions">http://127.0.0.1:8000/GET_originaldata_galway_attactions</a></td>
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">Get the original Galway parks Data from file</td>
+                <td id="description">Get the original Galway parks Data from FILE</td>
                 <td><a href="http://127.0.0.1:8000/GET_originaldata_galway_parks">http://127.0.0.1:8000/GET_originaldata_galway_parks</a></td>
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">Get the original Galway scenic Data from file</td>
+                <td id="description">Get the original Galway scenic Data from FILE</td>
                 <td><a href="http://127.0.0.1:8000/GET_originaldata_galway_scenic">http://127.0.0.1:8000/GET_originaldata_galway_scenic</a></td>
               </tr>
               <tr>
@@ -111,16 +111,35 @@
                 <td id="description"><div id="warning">[Warning]</div> Clears the entire database. You will have to restart the server again to re-populate</td>
                 <td><a href="http://127.0.0.1:8000/DELETE_allData">http://127.0.0.1:8000/DELETE_allData</a></td>
               </tr>
+
+              <tr>
+                <td id="request_post">POST</td>
+                <td id="description">Add an geojson object to database.E.G http://127.0.0.1:8000/POST_addEntry/myname/category/mystreet/5000/900</td>
+                <td><a href="http://127.0.0.1:8000/POST_addEntry/myname/category/mystreet/5000/900">http://127.0.0.1:8000/POST_addEntry/myname/category/mystreet/5000/900</a></td>
+              </tr>
+
               <tr>
                 <td id="request_patch">PATCH</td>
                 <td id="description">Description</td>
                 <td><a href="http://127.0.0.1:8000/PATCH_">http://127.0.0.1:8000/PATCH_</a></td>
               </tr>
+
+
+
+
               <tr>
                 <td id="request_post">POST</td>
                 <td id="description">Description</td>
                 <td><a href="http://127.0.0.1:8000/POST_">http://127.0.0.1:8000/POST_</a></td>
               </tr>
+
+
+
+
+
+
+
+
             </tbody>
           </table>       
 
