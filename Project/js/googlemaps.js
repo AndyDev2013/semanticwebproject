@@ -27,7 +27,7 @@ function Galway_Attractions()
 	map.data.loadGeoJson('data/Galway_Attractions.geojson');
 }
 
-function Galway_Parks(select)
+function Galway_Parks()
 {
 	var map;
 
@@ -37,4 +37,28 @@ function Galway_Parks(select)
 	});
 
 	map.data.loadGeoJson('data/Galway_Parks.geojson');
+}
+
+function Galway_Structures()
+{
+	var map;
+
+	map = new google.maps.Map(document.getElementById('googlemap'), {
+		center: {lat: 53.270668, lng: -9.056790500000034},
+		zoom: 10
+	});
+
+	map.data.loadGeoJson('data/Galway_Structures.geojson');
+}
+
+function Galway_Recreation()
+{
+	var map;
+
+	map = new google.maps.Map(document.getElementById('googlemap'), {
+		center: {lat: 53.270668, lng: -9.056790500000034},
+		zoom: 10
+	});
+
+	map.data.loadGeoJson('data/Galway_Recreation.geojson');
 }

@@ -33,6 +33,14 @@ app.get('/scenic', function(req, res) {
 	res.sendFile(__dirname + '/original_galwayScenic.html');
 });
 
+app.get('/structures', function(req, res) {
+	res.sendFile(__dirname + '/original_galwayStructures.html');
+});
+
+app.get('/recreation', function(req, res) {
+	res.sendFile(__dirname + '/original_galwayRecreation.html');
+});
+
 app.get('/database', function(req, res) {
 
 	var datastuff = [];
@@ -73,6 +81,24 @@ app.get('/GET_originaldata_galway_scenic', function(req, res) {
 	res.set('Content-Type', 'text/json');
 	res.status(200);
 	res.json(JSON.parse(fs.readFileSync('data/Galway_Scenic.geojson')));
+
+	reportConnect(req);
+});
+
+app.get('/GET_originaldata_galway_structures', function(req, res) {
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+	res.json(JSON.parse(fs.readFileSync('data/Galway_Structures.geojson')));
+
+	reportConnect(req);
+});
+
+app.get('/GET_originaldata_galway_recreationstrat', function(req, res) {
+
+	res.set('Content-Type', 'text/json');
+	res.status(200);
+	res.json(JSON.parse(fs.readFileSync('data/Galway_Recreation.geojson')));
 
 	reportConnect(req);
 });
@@ -328,10 +354,14 @@ function InitServer()
 		var data_Galway_Attra = JSON.parse(fs.readFileSync('data/Galway_Attractions.geojson', 'utf8'));
 		var data_Galway_Parks =	JSON.parse(fs.readFileSync('data/Galway_Parks.geojson',       'utf8'));
 		var data_Galway_Scene = JSON.parse(fs.readFileSync('data/Galway_Scenic.geojson',      'utf8'));
+		var data_Galway_Structures = JSON.parse(fs.readFileSync('data/Galway_Structures.geojson',      'utf8'));
+		var data_Galway_Recreation = JSON.parse(fs.readFileSync('data/Galway_Recreation.geojson',      'utf8'));
 
-		console.log("-- data/Galway_Attractions.geojson : Records [" + data_Galway_Attra.features.length + "]");
-		console.log("-- data/Galway_Parks.geojson       : Records [" + data_Galway_Parks.features.length + "]");
-		console.log("-- data/Galway_Scenic.geojson      : Records [" + data_Galway_Scene.features.length + "]");
+		console.log("-- data/Galway_Attractions.geojson          : Records [" + data_Galway_Attra.features.length + "]");
+		console.log("-- data/Galway_Parks.geojson                : Records [" + data_Galway_Parks.features.length + "]");
+		console.log("-- data/Galway_Scenic.geojson               : Records [" + data_Galway_Scene.features.length + "]");
+		console.log("-- data/Galway_Structures.geojson           : Records [" + data_Galway_Structures.features.length + "]");
+		console.log("-- data/Galway_Recreation.geojson           : Records [" + data_Galway_Recreation.features.length + "]");
 
 		console.log("\nCommitting files to database...");
 
@@ -360,6 +390,28 @@ function InitServer()
 		for (var i = 0; i < data_Galway_Scene.features.length; i++) 
 		{
 			var temp = /*JSON.stringify*/(data_Galway_Scene.features[i]);
+
+			db.post(temp, function(error, result)
+			{
+				if(error != null)
+					console.log(error);
+			})
+		}
+
+		for (var i = 0; i < data_Galway_Structures.features.length; i++) 
+		{
+			var temp = /*JSON.stringify*/(data_Galway_Structures.features[i]);
+
+			db.post(temp, function(error, result)
+			{
+				if(error != null)
+					console.log(error);
+			})
+		}
+
+		for (var i = 0; i < data_Galway_Recreation.features.length; i++) 
+		{
+			var temp = /*JSON.stringify*/(data_Galway_Recreation.features[i]);
 
 			db.post(temp, function(error, result)
 			{
