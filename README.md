@@ -4,11 +4,25 @@ Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweene
 
 # Contents
 
+## The Project
+
 * Project Outline
 * Choosen Datasets
 * Integration plan
+* Things that changed and reflection
+
+## Installation and Use
+
+* Installation
+* Api Use
+* Summary
+* References
 
 # Project Outline
+
+The project was assigned as part of the Semantic Web Module for Dr Ian Mc'Loughlin in GMIT. This is a fourth year project showcasing use of Node.js, Javascript, Googlemaps and HTML skills.
+
+I chose to focus this project on the Galway county and use datasets relating to possible tourist activities. My aim was to highlight the areas in Galway that could potentially be used to create excursions and other touristic activites. This is why I chose to deal specifically with geojson data.
 
 * Create a GitHub repo (this one) with Readme file using MarkDown format. 
 * Find two open datasets,describe the datasets, their use and upload them to the repo for reference.
@@ -29,6 +43,8 @@ After checking over them all I decided to use the following three datasets
 * [Galway County Scenic Routes](https://data.gov.ie/dataset/galway-county-scenic-routesf5940)
 * [Public Visitor Attractions Open Data](https://data.gov.ie/dataset/galway-city-public-visitor-attractions)
 * [Galway City Parks](http://opendata.galwaycity.opendata.arcgis.com/datasets/683ff500430447c985f4775a6b5dd112_0)
+* [Galway Structures](http://opendata.galwaycity.opendata.arcgis.com/datasets/5aeadf7112614f11b712734f9f47dab6_0.geojson)
+* [Recreation Data](http://data.galwaycoco.opendata.arcgis.com/datasets/35907ebb169c4ce8960fc4731c3d16ff_0.geojson)
 
 The goal of combining these three datasets is to point out if public visitor attractions and Galway parks are close to each other. This kind of information can be used for
 
@@ -51,11 +67,38 @@ The user should be able to
 * Return json information on a selected area defined by the user
 * Add their own points of interest
 
+# Things that changed and reflection
+
+After playing around with alot of different databases that Node.js could be implemented with I soon found Sqlite3 not to be ideal for what I was doing and pouchdb would be the better. It was easier to store geojson in pouchdb. There was very few geojson datasets out there for Galway so I took all that I could relating to tourism and ended up with the 5 mentioned. This resulted in a small dataset and this was another big reason for choosing pouchdb. 
+
+# Installation and Use
+
+For any missing or required please run the command
+```npm install```
+in the appropriate folder location.
+
+To start the Node.js server run the command
+
+```node runme```
+
+runme.js is responsible for all of the function the application.
+
+In the js folder the file "googlemaps.js" is responsible for displaying google maps.
+
+Javascript on the html pages is responsible for some of the google maps displaying also.
+
+# Api Use
+
+# Summary
+
+# References
+
 Links to resources
 * [Node.js](https://nodejs.org/en/)
 * [Sqlite3](https://www.npmjs.com/package/sqlite3)
 * [BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
 * [Google Maps](https://developers.google.com/maps/?hl=en)
+* [Pouchdb](http://pouchdb.com/learn.html)
 
 
 
