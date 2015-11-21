@@ -31,9 +31,12 @@
             </button>
             <a class="navbar-brand" href="index.html">Semantic Web Project - Galway Geolocation Information</a>
         </div>
+
+
        
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
+            <div class="row"><img id="galwaymapimg" src="/img/GalwayMap.png"></div>
                 <li class="active">
                     <a href="index.html"><i></i>API and Help</a>
                     <a href="/database"><i></i>Raw Database ID's</a>
@@ -58,7 +61,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>The purpose of using information from these three data sets was to show scenic routes, attactions and parks from around galway. This kind of information could be used in the tourism sector to generate walking tours, bus tours and other excavations around Galway county.</td>
+                <td>The purpose of using information from these five data sets was to show scenic routes, attactions and parks from around Galway. This kind of information could be used in the tourism sector to generate walking tours, bus tours and other excavations around Galway county.<div><a href="https://github.com/AndyDev2013/semanticwebproject">GitHub Project Link for more detail</a></div></td>
               </tr>
             </tbody>
           </table> 
@@ -73,7 +76,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>All data is returned in raw geojson format as text. To query, click on any of the Url links to copy the data or make a request to the given urls. Below is a key showing all of the available functions with the api.</td>
+                <td>All data is returned in <b>raw geojson format as text</b>. To query, click on any of the Url links to copy the data or make a request to the given urls. Below is a key showing all of the available functions with the api.</td>
               </tr>
             </tbody>
           </table> 
@@ -114,17 +117,17 @@
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">All data from database</td>
+                <td id="description">All geojson data entries from database</td>
                 <td><a href="http://127.0.0.1:8000/GET_allData">http://127.0.0.1:8000/GET_allData</a></td>
               </tr>
               <tr>
                 <td id="request_delete">DELETE</td>
-                <td id="description"><div id="warning">[Warning]</div> Clears the entire database. You will have to restart the server again to re-populate</td>
+                <td id="description"><div id="warning">[Warning]</div> Clears the entire database. You will have to restart the server again to re-populate the pouchdb</td>
                 <td><a href="http://127.0.0.1:8000/DELETE_allData">http://127.0.0.1:8000/DELETE_allData</a></td>
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">All a count of all entries</td>
+                <td id="description">All a count of all entries currently in the database</td>
                 <td><a href="http://127.0.0.1:8000/GET_COUNT">http://127.0.0.1:8000/GET_COUNT</a></td>
               </tr>              
               <tr>
@@ -134,40 +137,33 @@
               </tr>
               <tr>
                 <td id="request_delete">DELETE</td>
-                <td id="description">Deletes an entry given the id</td>
+                <td id="description">Deletes an entry given the id <div id="warning">[Warning]</div> Check the admin console for an example ID or choose one from the database id page</td>
                 <td><a href="http://127.0.0.1:8000/DELETE_deleteEntry/0">http://127.0.0.1:8000/DELETE_deleteEntry/0</a></td>
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">All FIRST entry</td>
+                <td id="description">All the FIRST entry in the database</td>
                 <td><a href="http://127.0.0.1:8000/GET_FIRST">http://127.0.0.1:8000/GET_FIRST</a></td>
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">All LAST entry</td>
+                <td id="description">All LAST entry in the database</td>
                 <td><a href="http://127.0.0.1:8000/GET_LAST">http://127.0.0.1:8000/GET_LAST</a></td>
               </tr>              
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">All FIRST available 10 entries</td>
+                <td id="description">All FIRST available 10 entries in the database</td>
                 <td><a href="http://127.0.0.1:8000/GET_HEAD">http://127.0.0.1:8000/GET_HEAD</a></td>
               </tr>
               <tr>
                 <td id="request_get">GET</td>
-                <td id="description">All LAST available 10 entries</td>
+                <td id="description">All LAST available 10 entries in the database</td>
                 <td><a href="http://127.0.0.1:8000/GET_TAIL">http://127.0.0.1:8000/GET_TAIL</a></td>
               </tr>
               <tr>
                 <td id="request_patch">PATCH</td>
-                <td id="description">Change a record by a given id</td>
+                <td id="description">Change a record in the database by a given id</td>
                 <td><a href="http://127.0.0.1:8000/PATCH_changeEntry/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900">http://127.0.0.1:8000/PATCH_changeEntry/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900</a></td>
-              </tr>
-
-
-              <tr>
-                <td id="request_post">POST</td>
-                <td id="description">Description</td>
-                <td><a href="http://127.0.0.1:8000/POST_">http://127.0.0.1:8000/POST_</a></td>
               </tr>
 
             </tbody>

@@ -1,0 +1,27 @@
+{
+  "name": "semanticweb",
+  "version": "0.0.9",
+  "description": "Project created as part of a fourth year GMIT project.",
+  "main": "runme.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "fs": "^0.0.2",
+    "fs-json": "^0.1.2",
+    "geojson": "^0.2.1",
+    "http": "^0.0.0",
+    "pouchdb": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gmit",
+    "fourth",
+    "year",
+    "semantic",
+    "web"
+  ],
+  "author": "Andrew Sweeney",
+  "license": "ISC"
+}
