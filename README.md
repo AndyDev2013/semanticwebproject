@@ -101,6 +101,14 @@ Javascript on the html pages is responsible for some of the google maps displayi
 
 # Summary
 
+Node.js was quite enjoyable and easy to pick up and use. There is plenty of plugins out there to help you rapidly create your content. There was alot of Javascript and documents to read in the process of creating this API. I also found when dealing with a small amount of entries it's best to stick to a database suited for data that size instead of something potentially far bigger and un-needed.
+
+The geojson around Galway wasn't as numerous as I thought it would be even though Galway has far more points of interest compared to the amount in the datasets supplied by the open data websites.
+
+This kind of development is alot more different then creating something using PHP and a MySQL database in the background. Pouchdb and the other databases I experimented allowed for storing more then fields, they allowed for storing full json and even geojson objects.
+
+Andrew Sweeney was the sole contributor on this project.
+
 ![Contributor](https://avatars1.githubusercontent.com/u/6676433?v=3&s=96)
 
 # References
@@ -108,6 +116,7 @@ Javascript on the html pages is responsible for some of the google maps displayi
 Links to resources
 * [Node.js](https://nodejs.org/en/)
 * [Sqlite3](https://www.npmjs.com/package/sqlite3)
+* [Neo4j](https://www.npmjs.com/package/neo4j)
 * [BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
 * [Google Maps](https://developers.google.com/maps/?hl=en)
 * [Pouchdb](http://pouchdb.com/learn.html)
