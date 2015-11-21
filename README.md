@@ -93,6 +93,12 @@ Javascript on the html pages is responsible for some of the google maps displayi
 
 # Api Use
 
+| Request        | Description           | Example  |
+| ------------- |:-------------:| -----:|
+| |  |  |
+| |  |  |
+| |  |  |
+
 # Summary
 
 # References
