@@ -18,6 +18,8 @@ Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweene
 * Summary
 * References
 
+# The Project
+
 # Project Outline
 
 The project was assigned as part of the Semantic Web Module for Dr Ian Mc'Loughlin in GMIT. This is a fourth year project showcasing use of Node.js, Javascript, Googlemaps and HTML skills.
