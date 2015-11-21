@@ -101,6 +101,8 @@ Javascript on the html pages is responsible for some of the google maps displayi
 
 # Summary
 
+![Contributor](https://avatars1.githubusercontent.com/u/6676433?v=3&s=96)
+
 # References
 
 Links to resources
@@ -109,6 +111,9 @@ Links to resources
 * [BootStrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
 * [Google Maps](https://developers.google.com/maps/?hl=en)
 * [Pouchdb](http://pouchdb.com/learn.html)
+* [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables)
+* [DataGov](https://data.gov.ie/data)
+* [Apps4Gaps](http://apps4gaps.ie/)
 
 
 
