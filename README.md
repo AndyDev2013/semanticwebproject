@@ -76,7 +76,9 @@ After playing around with alot of different databases that Node.js could be impl
 # Installation and Use
 
 For any missing or required please run the command
+
 ```npm install```
+
 in the appropriate folder location.
 
 To start the Node.js server run the command
