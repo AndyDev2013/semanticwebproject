@@ -113,7 +113,10 @@ This will navigate you to the API help and information page where you can view t
 Please note if you delete the database and local copy of it by using the api make sure that you restart the server to create the instance of the database and server again other wise you won't have anything return to you other then this error message.
 
 [Warning] If you've deleted the database using the API you'll recieve the following json object message
-```"{\"message\":\"No database exists, you may have called the delete api function. Please reboot the server to rebuild the server.\"}"``
+
+```
+"{\"message\":\"No database exists, you may have called the delete api function. Please reboot the server to rebuild the server.\"}"
+```
 
 If you wish to delete a data entry or update a data entry you will require either or both the 
 
