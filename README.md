@@ -96,7 +96,7 @@ Javascript on the html pages is responsible for some of the google maps displayi
 # Api Use
 
 | Request        | Description           | Example  | Example Parameters |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:| -----:| -----:|
 |GET| Get the original Galway Attractions Data from FILE  | /GET_originaldata_galway_attactions | None |
 |GET| Get the original Galway parks Data from FILE | /GET_originaldata_galway_parks | None |
 |GET| Get the original Galway scenic Data from FILE | /GET_originaldata_galway_scenic  | None |
