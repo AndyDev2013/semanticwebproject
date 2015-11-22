@@ -128,7 +128,11 @@ This will navigate you to the API help and information page where you can view t
 |GET| All LAST available 10 entries in the database | /GET_TAIL | None |
 |PATCH| Change a record in the database by a given id |  /PATCH_changeEntry | /012345/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900 |
 
+A sample of the geojson data that's returned for one type of record.
 
+```
+"[{\"id\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"key\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"value\":{\"rev\":\"1-68a9dab891c9ce2307841523b0cf0aff\"},\"doc\":{\"type\":\"Feature\",\"properties\":{\"FID\":45,\"Category\":\"K3\",\"Ref\":\"RN23\",\"name\":\"Carrick-on-Shannon Rowing Club\",\"descriptio\":\"Kayaking Club\",\"long\":\"-8.096004\",\"lat\":\"53.944486\",\"Email\":\"carrickrc@gmail.com\",\"Web\":\"www.carrickrc.com\",\"Phone\":\"086 8377868\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-8.096004,53.944486]},\"_id\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"_rev\":\"1-68a9dab891c9ce2307841523b0cf0aff\"}}]"
+```
 
 # Extending the Api
 
@@ -139,8 +143,8 @@ Here is a sample of the basic type of request you can do to return data given NO
 ```
 app.get('/ROUTE_NAME', function(req, res) // Put your custom route here
 {
-	res.set('Content-Type', 'text/json'); // Content Header
-	res.status(200); // HTTP Status Code
+    res.set('Content-Type', 'text/json'); // Content Header
+    res.status(200); // HTTP Status Code
 
     res.send("Successful reply from server"); // sending back data
     
@@ -153,13 +157,13 @@ app.get('/ROUTE_NAME', function(req, res) // Put your custom route here
 To pass parameters to the api you would use code that looks like the following
 
 ```
-app.get('/ROUTE_NAME/:firstParam/:secondParam/', function(req, res) // Put your custom route here
+app.get('/ROUTE_NAME/:firstParam/:secondParam/', function(req, res) // Pass your parameters up here
 {
   var firstParam = req.params.firstParam; // Taking the data from the request object and storing in a variable called firstParam
   var secondParam = req.params.secondParam; // Taking the data from the request object and storing in a variable called secondParam
 
-	res.set('Content-Type', 'text/json'); 
-	res.status(200);
+  res.set('Content-Type', 'text/json'); 
+  res.status(200);
 
   res.send("First parameter was: " + firstParam + " - Second parameter was: " + secondParam); // sending back data
 
