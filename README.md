@@ -134,9 +134,13 @@ A sample of the geojson data that's returned for one type of record.
 "[{\"id\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"key\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"value\":{\"rev\":\"1-68a9dab891c9ce2307841523b0cf0aff\"},\"doc\":{\"type\":\"Feature\",\"properties\":{\"FID\":45,\"Category\":\"K3\",\"Ref\":\"RN23\",\"name\":\"Carrick-on-Shannon Rowing Club\",\"descriptio\":\"Kayaking Club\",\"long\":\"-8.096004\",\"lat\":\"53.944486\",\"Email\":\"carrickrc@gmail.com\",\"Web\":\"www.carrickrc.com\",\"Phone\":\"086 8377868\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-8.096004,53.944486]},\"_id\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"_rev\":\"1-68a9dab891c9ce2307841523b0cf0aff\"}}]"
 ```
 
+A sample of the count data returned 
+
+```"{\"count\":0}"```
+
 # Extending the Api
 
-If you wish to extend the api please do so in the section marked "Extended API". Around ```Line 390```
+If you wish to extend the api please do so in the section marked "Extended API". Around ```Line 432```
 
 Here is a sample of the basic type of request you can do to return data given NO passed parameters
 
