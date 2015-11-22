@@ -89,11 +89,22 @@ To start the Node.js server run the command
 
 runme.js is responsible for all of the function the application.
 
+In the command console after running these commands you should see something like this
+
+![Contributor](http://puu.sh/luuwq/5e8c218155.png)
+
 In the js folder the file "googlemaps.js" is responsible for displaying google maps.
 
 Javascript on the html pages is responsible for some of the google maps displaying also.
 
 # Api Use
+
+Once you start the server open up your browser and enter ```http://127.0.0.1:8000/``` into the url bar.
+This will navigate you to the API help and information page where you can view the browse to
+
+* Sample url requests
+* See the original geojson information on a custom googlemap
+* View all of the current ids from records currently stored in the pouchdb database
 
 | Request        | Description           | Example  | Example Parameters |
 | ------------- |:-------------:| -----:| -----:|
