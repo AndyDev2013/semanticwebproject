@@ -293,7 +293,7 @@ app.get('/GET_FIRST', function(req, res) {
 	var data = [];
 
 	if(masterAlldata.length > 0) // If at least one entry exists
-		data.push(masterAlldata[i]); // Add the one entry	
+		data.push(masterAlldata[0]); // Add the one entry	
 
     res.json(JSON.stringify(data));   // return the one entry
 
@@ -324,20 +324,22 @@ app.get('/GET_COUNT', function(req, res) {
 	res.set('Content-Type', 'text/json');
 	res.status(200);
 
-    res.json(JSON.stringify(masterAlldata.length));  // Get the amount of entries stored in the local version of the db and return it
+	if(masterAlldata = null)
+    	res.json(JSON.stringify(0));
+    else
+    	res.json(JSON.stringify(masterAlldata.length));  // Get the amount of entries stored in the local version of the db and return it
 
     reportConnect(req);
 });
 
 // Returns a count of all of the entries in the local database
 
-app.get('/PATCH_changeEntry/:id/:name/:category/:street/:lat/:lng', function(req, res) 
+app.get('/PATCH_changeEntry/:id/:rev/:name/:category/:street/:lat/:lng', function(req, res) 
 {
 	recordCount();
 
 	var geoOb =
 	[{
-		id : req.params.id;
 		name : req.params.name,
 		category : req.params.category,
 		street : req.params.street,
@@ -347,24 +349,27 @@ app.get('/PATCH_changeEntry/:id/:name/:category/:street/:lat/:lng', function(req
 	
 	// 
 
-	var geoOb = GeoJSON.parse(geoOb, {Point: ['lat', 'lng']});
-
-	db.post(geoOb, function(error, result)
+	db.get(req.params.id).then(function(doc) 
 	{
-		updateLocalDatabase();
+	  console.log("\nFound existing record for update");
 
-		/*
-		if(error != null)
-			console.log(error);
-		else
-			console.log(result);
-		*/
+	  return db.put(
+	  {
+	    geoOb
 
-	})
+	  }, req.params.id, req.params.rev);
+	}).then(function(response) 
+	{
+
+	}).catch(function (err) 
+	{
+	  console.log();
+	  console.log("\nDidn't find existing record for update");
+	});
 
 	reportConnect(req);
 
-	res.json(JSON.stringify(geoOb));
+	//res.json(JSON.stringify(geoOb));
 });
 
 // Server Listening on port 8000
@@ -485,8 +490,12 @@ function InitServer()
 
 			for(var i = 0;i < 1;i++)
 			{
-				var str = JSON.stringify(result.rows[i].doc._id);
-				console.log("Sample ID that you can use for Updating/Deleting an entry" + str);
+				var str = result.rows[i].doc._id;
+				var rev = result.rows[i].doc._rev;
+
+				console.log("Sample ID that you can use for Updating/Deleting an entry");
+				console.log("ID: " + str);
+				console.log("REV: " + rev);
 			}
 
 			// Outputting the first entry as a sample for use
