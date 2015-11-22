@@ -18,6 +18,12 @@ var db;
 // The two main variables of this server, the master all data holds
 // the database locally and the db variable is the pouch database
 
+var errorMessage = {
+	message : "No database exists, you may have called the delete api function. Please reboot the server to rebuild the server."
+}
+
+// A default error message incase a query is made on an empty/non existant database
+
 InitServer();
 
 // My init method for setting up the db
@@ -119,8 +125,16 @@ app.get('/GET_originaldata_galway_recreationstrat', function(req, res) {
 app.get('/GET_allData', function(req, res) {
 
 	res.set('Content-Type', 'text/json');
-	res.status(200);
-    res.json(JSON.stringify(masterAlldata));   // Return the entire local version of the database as one large json object
+
+	if(masterAlldata != null)
+	{
+		res.status(200);
+	    res.json(JSON.stringify(masterAlldata));   // Return the entire local version of the database as one large json object
+	}
+	else
+	{
+		res.json(JSON.stringify(errorMessage)); 
+	}
 
     reportConnect(req);
 });
@@ -142,7 +156,7 @@ app.get('/DELETE_allData', function(req, res) {
 		masterAlldata = null;	// Clearing the variable with the local version of the data
 		db = null; // Clearing the database object for pouchdb
 
-		res.status(200).send('OK');
+		res.status(200);
 		res.type('json');
 
 		res.json(dbWarning);  // Return the successful warning
@@ -197,7 +211,7 @@ app.get('/POST_addEntry/:name/:category/:street/:lat/:lng', function(req, res)
 app.get('/DELETE_deleteEntry/:id', function(req, res) {
 
 	var dbWarning = {"warning_message":"Entry HAS been deleted"};
-	var dbOtherWarning = {"warning_message":"Database has NOT been deleted"};
+	var dbOtherWarning = {"warning_message":"Entry has NOT been deleted"};
 
 	// Declaring good and bad warning messages
 
@@ -220,29 +234,38 @@ app.get('/GET_HEAD', function(req, res) {
 
 	var MAX = 10;
 
-	res.set('Content-Type', 'text/json');
-	res.status(200);
+	if(masterAlldata != null)
+	{	
+		res.set('Content-Type', 'text/json');
+		res.status(200);
 
-	var count = masterAlldata.length; // Get the amount of entries in the local version of the database
+		var count = masterAlldata.length; // Get the amount of entries in the local version of the database
 
-	var data = []; // Create an array
+		var data = []; // Create an array
 
-	if(count > MAX) // If the amount of database entries is greater then 10...
-	{
-		for(var i = 0;i < MAX;i++) // for 10 entries
+		if(count > MAX) // If the amount of database entries is greater then 10...
 		{
-			data.push(masterAlldata[i]); // add them to the array
+			for(var i = 0;i < MAX;i++) // for 10 entries
+			{
+				data.push(masterAlldata[i]); // add them to the array
+			}
 		}
-	}
-	else // There is less the 10 entries so just print them all...even if its less then 10
-	{
-		for(var i = 0;i < masterAlldata.length;i++)
+		else // There is less the 10 entries so just print them all...even if its less then 10
 		{
-			data.push(masterAlldata[i]);
+			for(var i = 0;i < masterAlldata.length;i++)
+			{
+				data.push(masterAlldata[i]);
+			}
 		}
+
+		res.json(JSON.stringify(data));
+	}
+	else
+	{
+		res.json(JSON.stringify(errorMessage));
 	}
 
-    res.json(JSON.stringify(data)); // Return the 10 of less entries
+     // Return the 10 of less entries
 
     reportConnect(req);
 });
@@ -254,30 +277,37 @@ app.get('/GET_TAIL', function(req, res) {
 
 	var MAX = 10;
 
-	res.set('Content-Type', 'text/json');
-	res.status(200);
+	if(masterAlldata != null)
+	{	
+		res.set('Content-Type', 'text/json');
+		res.status(200);
 
-	var count = masterAlldata.length;
+		var count = masterAlldata.length;
 
-	var data = [];
+		var data = [];
 
-	if(count > MAX)
-	{
-		for(var i = count;i >= (count-MAX);i--)
+		if(count > MAX)
 		{
-			data.push(masterAlldata[i]);
+			for(var i = count;i >= (count-MAX);i--)
+			{
+				data.push(masterAlldata[i]);
+			}
 		}
+		else
+		{
+
+			for(var i = 0;i < masterAlldata.length;i++)
+			{
+				data.push(masterAlldata[i]);
+			}
+		}
+
+	    res.json(JSON.stringify(data));   
 	}
 	else
 	{
-
-		for(var i = 0;i < masterAlldata.length;i++)
-		{
-			data.push(masterAlldata[i]);
-		}
+		res.json(JSON.stringify(errorMessage));
 	}
-
-    res.json(JSON.stringify(data));   
 
     reportConnect(req);
 });
@@ -287,15 +317,22 @@ app.get('/GET_TAIL', function(req, res) {
 
 app.get('/GET_FIRST', function(req, res) {
 
-	res.set('Content-Type', 'text/json');
-	res.status(200);
+	if(masterAlldata != null)
+	{			
+		res.set('Content-Type', 'text/json');
+		res.status(200);
 
-	var data = [];
+		var data = [];
 
-	if(masterAlldata.length > 0) // If at least one entry exists
-		data.push(masterAlldata[0]); // Add the one entry	
+		if(masterAlldata.length > 0) // If at least one entry exists
+			data.push(masterAlldata[0]); // Add the one entry	
 
-    res.json(JSON.stringify(data));   // return the one entry
+	    res.json(JSON.stringify(data));   // return the one entry
+	}
+	else
+	{
+		res.json(JSON.stringify(errorMessage));
+	}
 
     reportConnect(req);
 });
@@ -304,15 +341,22 @@ app.get('/GET_FIRST', function(req, res) {
 
 app.get('/GET_LAST', function(req, res) {
 
-	res.set('Content-Type', 'text/json');
-	res.status(200);
+	if(masterAlldata != null)
+	{			
+		res.set('Content-Type', 'text/json');
+		res.status(200);
 
-	var data = [];
+		var data = [];
 
-	if(masterAlldata.length > 0) // If at least one entry exists
-		data.push(masterAlldata[masterAlldata.length - 1]);	// Add the last entry	
+		if(masterAlldata.length > 0) // If at least one entry exists
+			data.push(masterAlldata[masterAlldata.length - 1]);	// Add the last entry	
 
-    res.json(JSON.stringify(data));  // return the one entry   
+	    res.json(JSON.stringify(data));  // return the one entry   
+	}
+	else
+	{
+		res.json(JSON.stringify(errorMessage));
+	}
 
     reportConnect(req);
 });
@@ -321,13 +365,25 @@ app.get('/GET_LAST', function(req, res) {
 
 app.get('/GET_COUNT', function(req, res) {
 
-	res.set('Content-Type', 'text/json');
-	res.status(200);
+	if(masterAlldata == null) // If there is no database obect return 0
+	{	
+		res.set('Content-Type', 'text/json');
+		res.status(200);
+		
+		var count = {
+			count : 0
+		}
 
-	if(masterAlldata = null)
-    	res.json(JSON.stringify(0));
+    	res.json(JSON.stringify(count)); 
+    }
     else
-    	res.json(JSON.stringify(masterAlldata.length));  // Get the amount of entries stored in the local version of the db and return it
+    {
+		var count = {
+			count : masterAlldata.length
+		}
+
+    	res.json(JSON.stringify(count));// Get the amount of entries stored in the local version of the db and return it
+    }
 
     reportConnect(req);
 });
@@ -371,6 +427,29 @@ app.get('/PATCH_changeEntry/:id/:rev/:name/:category/:street/:lat/:lng', functio
 
 	//res.json(JSON.stringify(geoOb));
 });
+
+
+// ######## ##     ## ######## ######## ##    ## ########  ######## ########        ###    ########  #### 
+// ##        ##   ##     ##    ##       ###   ## ##     ## ##       ##     ##      ## ##   ##     ##  ##  
+// ##         ## ##      ##    ##       ####  ## ##     ## ##       ##     ##     ##   ##  ##     ##  ##  
+// ######      ###       ##    ######   ## ## ## ##     ## ######   ##     ##    ##     ## ########   ##  
+// ##         ## ##      ##    ##       ##  #### ##     ## ##       ##     ##    ######### ##         ##  
+// ##        ##   ##     ##    ##       ##   ### ##     ## ##       ##     ##    ##     ## ##         ##  
+// ######## ##     ##    ##    ######## ##    ## ########  ######## ########     ##     ## ##        #### 
+  
+
+/*
+app.get('/ROUTE_NAME', function(req, res)
+{
+	res.set('Content-Type', 'text/json'); // Content Header
+	res.status(200); // HTTP Status Code
+
+    res.send("Successful reply from server"); // sending back data
+
+    reportConnect(req); // Printing the ip that requested the information and the route to the servers console to keep track of requests and frequency
+});
+*/
+
 
 // Server Listening on port 8000
 
