@@ -115,6 +115,13 @@ Please note if you delete the database and local copy of it by using the api mak
 [Warning] If you've deleted the database using the API you'll recieve the following json object message
 ```"{\"message\":\"No database exists, you may have called the delete api function. Please reboot the server to rebuild the server.\"}"``
 
+If you wish to delete a data entry or update a data entry you will require either or both the 
+
+* ID
+* REV 
+
+To get these check the administrator console where the id and rev for the first entry is printed out 
+
 | Request        | Description           | Example  | Example Parameters |
 | ------------- |:-------------:| -----:| -----:|
 |GET| Get the original Galway Attractions Data from FILE  | /GET_originaldata_galway_attactions | None |
