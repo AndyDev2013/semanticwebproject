@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/attractions', function(req, res) {
-	res.sendFile(__dirname + '/original_galwayAttactions.html');
+	res.sendFile(__dirname + '/original_galwayAttractions.html');
 });
 
 app.get('/parks', function(req, res) {
@@ -60,7 +60,10 @@ app.get('/database', function(req, res) {
 
 	for(var i = 0;i < masterAlldata.length;i++) // Foreach entry in the local version of the database
 	{
-		var temp = masterAlldata[i].id; // Store each id
+		var temp = 
+		{
+			id : masterAlldata[i].id, // Store each id
+		}
 
 		datastuff.push(temp); // Add each id to an object
 	}
@@ -72,7 +75,7 @@ app.get('/database', function(req, res) {
 
 // Displays one large Json object containing all of the ID's of entries currently in the database
 
-app.get('/GET_originaldata_galway_attactions', function(req, res) {
+app.get('/GET_originaldata_galway_attractions', function(req, res) {
 
 	res.set('Content-Type', 'text/json'); // Setting the content type
 	res.status(200); // Setting the return status
@@ -572,7 +575,7 @@ function InitServer()
 				var str = result.rows[i].doc._id;
 				var rev = result.rows[i].doc._rev;
 
-				console.log("Sample ID that you can use for Updating/Deleting an entry");
+				console.log("Sample ID that you can use for Updating/Deleting an entry\n");
 				console.log("ID: " + str);
 				console.log("REV: " + rev);
 			}

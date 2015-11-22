@@ -112,7 +112,7 @@ This will navigate you to the API help and information page where you can view t
 
 | Request        | Description           | Example  | Example Parameters |
 | ------------- |:-------------:| -----:| -----:|
-|GET| Get the original Galway Attractions Data from FILE  | /GET_originaldata_galway_attactions | None |
+|GET| Get the original Galway Attractions Data from FILE  | /GET_originaldata_galway_attractions | None |
 |GET| Get the original Galway parks Data from FILE | /GET_originaldata_galway_parks | None |
 |GET| Get the original Galway scenic Data from FILE | /GET_originaldata_galway_scenic  | None |
 |GET| Get the original Galway structures Data from FILE | /GET_originaldata_galway_structures  | None |
