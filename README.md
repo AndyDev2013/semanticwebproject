@@ -2,6 +2,8 @@
 
 Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweeney
 
+![Screenshot](http://puu.sh/lutuj/505553cf32.png)
+
 # Contents
 
 ## The Project
@@ -13,7 +15,7 @@ Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweene
 
 ## Installation and Use
 
-* Installation
+* Installation and About the code
 * Api Use
 * Summary
 * References
@@ -87,17 +89,85 @@ To start the Node.js server run the command
 
 runme.js is responsible for all of the function the application.
 
-In the js folder the file "googlemaps.js" is responsible for displaying google maps.
+In the command console after running these commands you should see something like this
 
-Javascript on the html pages is responsible for some of the google maps displaying also.
+![Console Screenshot](http://puu.sh/luuwq/5e8c218155.png)
+
+The most important scripts to this project are the 
+
+* js/runme.js (Responsible for running the server and all of the routing and information handling)
+* js/googlemaps.js (Responsible for displaying googlemaps on every page)
+* package.json (Responsible for installing all of the dependencies)
+* data/* (Holds a local copy of all of the geojson data)
+* css/custom.css (Responsible for some of the minor custom styling)
 
 # Api Use
 
-| Request        | Description           | Example  |
-| ------------- |:-------------:| -----:|
-| |  |  |
-| |  |  |
-| |  |  |
+Once you start the server open up your browser and enter ```http://127.0.0.1:8000/``` into the url bar.
+This will navigate you to the API help and information page where you can view the browse to
+
+* Sample url requests
+* See the original geojson information on a custom googlemap
+* View all of the current ids from records currently stored in the pouchdb database
+
+| Request        | Description           | Example  | Example Parameters |
+| ------------- |:-------------:| -----:| -----:|
+|GET| Get the original Galway Attractions Data from FILE  | /GET_originaldata_galway_attactions | None |
+|GET| Get the original Galway parks Data from FILE | /GET_originaldata_galway_parks | None |
+|GET| Get the original Galway scenic Data from FILE | /GET_originaldata_galway_scenic  | None |
+|GET| Get the original Galway structures Data from FILE | /GET_originaldata_galway_structures  | None |
+|GET| Get the original Galway recreation strategy Data from FILE | /GET_originaldata_galway_recreationstrat | None |
+|GET| All geojson data entries from database | /GET_allData  | None |
+|DELETE| Clears the entire database. You will have to restart the server again to re-populate the pouchdb | /DELETE_allData  | None |
+|GET| All a count of all entries currently in the database | /GET_COUNT | None |
+|POST| Add an entry to the database | /POST_addEntry | /myname/category/mystreet/5000/900 | 
+|DELETE| Deletes an entry given the id | /DELETE_deleteEntry | /0 |
+|GET| All the FIRST entry in the database | /GET_FIRST | None |
+|GET| All LAST entry in the database | /GET_FIRST | None |
+|GET| All FIRST available 10 entries in the database | /GET_HEAD| None |
+|GET| All LAST available 10 entries in the database | /GET_TAIL | None |
+|PATCH| Change a record in the database by a given id |  /PATCH_changeEntry | /012345/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900 |
+
+A sample of the geojson data that's returned for one type of record.
+
+```
+"[{\"id\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"key\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"value\":{\"rev\":\"1-68a9dab891c9ce2307841523b0cf0aff\"},\"doc\":{\"type\":\"Feature\",\"properties\":{\"FID\":45,\"Category\":\"K3\",\"Ref\":\"RN23\",\"name\":\"Carrick-on-Shannon Rowing Club\",\"descriptio\":\"Kayaking Club\",\"long\":\"-8.096004\",\"lat\":\"53.944486\",\"Email\":\"carrickrc@gmail.com\",\"Web\":\"www.carrickrc.com\",\"Phone\":\"086 8377868\"},\"geometry\":{\"type\":\"Point\",\"coordinates\":[-8.096004,53.944486]},\"_id\":\"0073DDBD-63FE-EC9D-8CE2-7F181E9448A5\",\"_rev\":\"1-68a9dab891c9ce2307841523b0cf0aff\"}}]"
+```
+
+A sample of the count data returned 
+
+``` "{\"count\":0}" ```
+
+# Extending the Api
+
+If you wish to extend the api please do so in the section marked "Extended API". Around ```Line 440```
+
+Here is a sample of the basic type of request you can do to return data given NO passed parameters
+
+``` 
+app.get('/ROUTE_NAME', function(req, res) // Put your custom route here
+{
+    res.set('Content-Type', 'text/json'); // Content Header
+    res.status(200); // HTTP Status Code
+    res.send("Successful reply from server"); // sending back data
+    //res.json(); // To return json data you would use the following
+    reportConnect(req); // Printing the ip that requested the information and the route to the servers console to keep track of requests and frequency
+});
+```
+
+To pass parameters to the api you would use code that looks like the following
+
+```
+app.get('/ROUTE_NAME/:firstParam/:secondParam/', function(req, res) // Pass your parameters up here
+{
+  var firstParam = req.params.firstParam; // Taking the data from the request object and storing in a variable called firstParam
+  var secondParam = req.params.secondParam; // Taking the data from the request object and storing in a variable called secondParam
+  res.set('Content-Type', 'text/json');  
+  res.status(200);
+  res.send("First parameter was: " + firstParam + " - Second parameter was: " + secondParam); // sending back data
+  reportConnect(req); 
+});
+```
 
 # Summary
 
