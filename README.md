@@ -136,24 +136,21 @@ A sample of the geojson data that's returned for one type of record.
 
 A sample of the count data returned 
 
-```"{\"count\":0}"```
+``` "{\"count\":0}" ```
 
 # Extending the Api
 
-If you wish to extend the api please do so in the section marked "Extended API". Around ```Line 432```
+If you wish to extend the api please do so in the section marked "Extended API". Around ```Line 440```
 
 Here is a sample of the basic type of request you can do to return data given NO passed parameters
 
-```
+``` 
 app.get('/ROUTE_NAME', function(req, res) // Put your custom route here
 {
     res.set('Content-Type', 'text/json'); // Content Header
     res.status(200); // HTTP Status Code
-
     res.send("Successful reply from server"); // sending back data
-    
     //res.json(); // To return json data you would use the following
-
     reportConnect(req); // Printing the ip that requested the information and the route to the servers console to keep track of requests and frequency
 });
 ```
@@ -165,12 +162,9 @@ app.get('/ROUTE_NAME/:firstParam/:secondParam/', function(req, res) // Pass your
 {
   var firstParam = req.params.firstParam; // Taking the data from the request object and storing in a variable called firstParam
   var secondParam = req.params.secondParam; // Taking the data from the request object and storing in a variable called secondParam
-
-  res.set('Content-Type', 'text/json'); 
+  res.set('Content-Type', 'text/json');  
   res.status(200);
-
   res.send("First parameter was: " + firstParam + " - Second parameter was: " + secondParam); // sending back data
-
   reportConnect(req); 
 });
 ```
