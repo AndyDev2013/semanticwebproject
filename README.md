@@ -123,7 +123,8 @@ If you wish to delete a data entry or update a data entry you will require eithe
 * ID
 * REV 
 
-To get these check the administrator console where the id and rev for the first entry is printed out 
+To get these check the administrator console where the ID and REV for the first entry is printed out. 
+(See the screenshot above of the administrator console)
 
 | Request        | Description           | Example  | Example Parameters |
 | ------------- |:-------------:| -----:| -----:|
