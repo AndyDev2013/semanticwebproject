@@ -2,6 +2,8 @@
 
 Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweeney
 
+![Screenshot](http://puu.sh/lutuj/505553cf32.png)
+
 # Contents
 
 ## The Project
@@ -93,11 +95,25 @@ Javascript on the html pages is responsible for some of the google maps displayi
 
 # Api Use
 
-| Request        | Description           | Example  |
+| Request        | Description           | Example  | Example Parameters |
 | ------------- |:-------------:| -----:|
-| |  |  |
-| |  |  |
-| |  |  |
+|GET| Get the original Galway Attractions Data from FILE  | /GET_originaldata_galway_attactions | None |
+|GET| Get the original Galway parks Data from FILE | /GET_originaldata_galway_parks | None |
+|GET| Get the original Galway scenic Data from FILE | /GET_originaldata_galway_scenic  | None |
+|GET| Get the original Galway structures Data from FILE | /GET_originaldata_galway_structures  | None |
+|GET| Get the original Galway recreation strategy Data from FILE | /GET_originaldata_galway_recreationstrat | None |
+|GET| All geojson data entries from database | /GET_allData  | None |
+|DELETE| Clears the entire database. You will have to restart the server again to re-populate the pouchdb | /GET_allData  | None |
+|GET| All a count of all entries currently in the database | /GET_COUNT | None |
+|POST| Add an entry to the database | /GET_allData  | /POST_addEntry | /myname/category/mystreet/5000/900 |
+|DELETE| Deletes an entry given the id | /GET_allData  | /DELETE_deleteEntry | /0 |
+|GET| All the FIRST entry in the database | /GET_FIRST | None |
+|GET| All LAST entry in the database | /GET_FIRST | None |
+|GET| All FIRST available 10 entries in the database | /GET_HEAD| None |
+|GET| All LAST available 10 entries in the database | /GET_TAIL | None |
+|PATCH| Change a record in the database by a given id |  /PATCH_changeEntry | /012345/FFFF-FFFF-FFFF-FFFF/myname/category/mystreet/5000/900 |
+
+# Extending the Api
 
 # Summary
 
