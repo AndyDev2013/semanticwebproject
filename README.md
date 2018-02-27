@@ -1,6 +1,6 @@
 # nodejsapi
 
-Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweeney
+Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweeney. 
 
 # Contents
 
