@@ -1,8 +1,6 @@
-# semanticwebproject
+# restfulNodeAPI
 
 Semantic Web Project for Year 4 of Software Development in GMIT by Andrew Sweeney
-
-![Screenshot](http://puu.sh/lutuj/505553cf32.png)
 
 # Contents
 
@@ -90,8 +88,6 @@ To start the Node.js server run the command
 runme.js is responsible for all of the function the application.
 
 In the command console after running these commands you should see something like this
-
-![Console Screenshot](http://puu.sh/luuwq/5e8c218155.png)
 
 The most important scripts to this project are the 
 
